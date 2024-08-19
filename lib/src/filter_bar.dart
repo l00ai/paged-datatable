@@ -26,8 +26,6 @@ class _FilterBarState<K extends Comparable<K>, T>
 
   @override
   Widget build(BuildContext context) {
-    var localizations = PagedDataTableLocalization.of(context);
-
     Widget child = SizedBox(
       height: theme.filterBarHeight,
       child: Row(
@@ -45,7 +43,7 @@ class _FilterBarState<K extends Comparable<K>, T>
                       child: InkWell(
                         radius: 20,
                         child: Tooltip(
-                          message: localizations.showFilterMenuTooltip,
+                          message: "Filters",
                           child: MouseRegion(
                             cursor: controller._state == _TableState.fetching
                                 ? SystemMouseCursors.basic
@@ -177,8 +175,6 @@ class _FiltersDialog<K extends Comparable<K>, T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final localizations = PagedDataTableLocalization.of(context);
-
     Widget filtersList = Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8.0),
       child: Form(
@@ -186,8 +182,8 @@ class _FiltersDialog<K extends Comparable<K>, T> extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(localizations.filterByTitle,
-                style: const TextStyle(fontWeight: FontWeight.bold)),
+            const Text("filter By Title",
+                style: TextStyle(fontWeight: FontWeight.bold)),
             const SizedBox(height: 8),
             ...tableController._filtersState.entries
                 .where((element) => element.value._filter.visible)
@@ -216,7 +212,7 @@ class _FiltersDialog<K extends Comparable<K>, T> extends StatelessWidget {
               Navigator.pop(context);
               tableController.removeFilters();
             },
-            child: Text(localizations.removeAllFiltersButtonText),
+            child: const Text("Remove all"),
           ),
           const Spacer(),
           TextButton(
@@ -226,7 +222,7 @@ class _FiltersDialog<K extends Comparable<K>, T> extends StatelessWidget {
             onPressed: () {
               Navigator.pop(context);
             },
-            child: Text(localizations.cancelFilteringButtonText),
+            child: const Text("Cancel filtering"),
           ),
           const SizedBox(width: 10),
           FilledButton(
@@ -239,7 +235,7 @@ class _FiltersDialog<K extends Comparable<K>, T> extends StatelessWidget {
               Navigator.pop(context);
               tableController.applyFilters();
             },
-            child: Text(localizations.applyFilterButtonText),
+            child: const Text("Apply filter"),
           ),
         ],
       ),

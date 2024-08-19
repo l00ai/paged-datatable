@@ -22,13 +22,12 @@ class _RefreshTableState<K extends Comparable<K>, T>
 
   @override
   Widget build(BuildContext context) {
-    final localizations = PagedDataTableLocalization.of(context);
     return Row(
       children: [
         const SizedBox(width: 10),
         IconButton(
           splashRadius: 20,
-          tooltip: localizations.refreshText,
+          tooltip: "Refresh",
           onPressed: () => controller.refresh(fromStart: false),
           icon: const Icon(Icons.refresh_outlined),
         ),
@@ -72,14 +71,13 @@ class _PageSizeSelectorState<K extends Comparable<K>, T>
 
   @override
   Widget build(BuildContext context) {
-    final localizations = PagedDataTableLocalization.of(context);
     assert(controller._pageSizes != null,
         "PageSizeSelector widget can be used only if the pageSizes property is set.");
 
     return Row(
       children: [
         const SizedBox(width: 10),
-        Text(localizations.rowsPerPageText),
+        const Text("Rows"),
         const SizedBox(width: 10),
         SizedBox(
           width: 100,
@@ -145,12 +143,11 @@ class _TotalItemsState<K extends Comparable<K>, T>
 
   @override
   Widget build(BuildContext context) {
-    final localizations = PagedDataTableLocalization.of(context);
 
     return Row(
       children: [
         const SizedBox(width: 10),
-        Text(localizations.totalElementsText(controller._totalItems)),
+        Text(controller._totalItems.toString()),
         const SizedBox(width: 10),
       ],
     );
@@ -191,11 +188,10 @@ class _CurrentPageState<K extends Comparable<K>, T>
 
   @override
   Widget build(BuildContext context) {
-    final localizations = PagedDataTableLocalization.of(context);
     return Row(
       children: [
         const SizedBox(width: 10),
-        Text(localizations.pageIndicatorText(controller._currentPageIndex + 1)),
+        Text((controller._currentPageIndex + 1).toString()),
         const SizedBox(width: 10),
       ],
     );
@@ -236,12 +232,11 @@ class _NavigationButtonsState<K extends Comparable<K>, T>
 
   @override
   Widget build(BuildContext context) {
-    final localizations = PagedDataTableLocalization.of(context);
     return Row(
       children: [
         const SizedBox(width: 10),
         IconButton(
-          tooltip: localizations.previousPageButtonText,
+          tooltip: "Previous",
           splashRadius: 20,
           icon: const Icon(Icons.keyboard_arrow_left_rounded),
           onPressed: (controller.hasPreviousPage &&
@@ -251,7 +246,7 @@ class _NavigationButtonsState<K extends Comparable<K>, T>
         ),
         const SizedBox(width: 12),
         IconButton(
-          tooltip: localizations.nextPageButtonText,
+          tooltip: "Next",
           splashRadius: 20,
           icon: const Icon(Icons.keyboard_arrow_right_rounded),
           onPressed: (controller.hasNextPage &&

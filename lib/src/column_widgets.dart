@@ -435,7 +435,6 @@ final class _EditableTextFieldOverlayState
 
   @override
   Widget build(BuildContext context) {
-    final localizations = PagedDataTableLocalization.of(context);
     return SafeArea(
       child: Stack(
         children: [
@@ -471,8 +470,7 @@ final class _EditableTextFieldOverlayState
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           TextButton(
-                            child: Text(
-                                localizations.editableColumnCancelButtonText),
+                            child: const Text("Cancel"),
                             onPressed: () {
                               Navigator.pop(context);
                             },
@@ -484,8 +482,7 @@ final class _EditableTextFieldOverlayState
                                 Navigator.pop(context, textController.text);
                               }
                             },
-                            child: Text(localizations
-                                .editableColumnSaveChangesButtonText),
+                            child: const Text("Save"),
                           )
                         ],
                       )
@@ -540,7 +537,6 @@ final class _EditableTextFieldBottomSheetState
 
   @override
   Widget build(BuildContext context) {
-    final localizations = PagedDataTableLocalization.of(context);
     return SafeArea(
       child: Padding(
           padding: const EdgeInsets.all(20),
@@ -567,7 +563,7 @@ final class _EditableTextFieldBottomSheetState
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     TextButton(
-                      child: Text(localizations.editableColumnCancelButtonText),
+                      child: const Text("Cancel"),
                       onPressed: () {
                         Navigator.pop(context);
                       },
@@ -579,8 +575,7 @@ final class _EditableTextFieldBottomSheetState
                           Navigator.pop(context, textController.text);
                         }
                       },
-                      child: Text(
-                          localizations.editableColumnSaveChangesButtonText),
+                      child: const Text("SaveChanges"),
                     )
                   ],
                 )
