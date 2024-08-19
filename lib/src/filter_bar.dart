@@ -222,7 +222,7 @@ class _FiltersDialog<K extends Comparable<K>, T> extends StatelessWidget {
             onPressed: () {
               Navigator.pop(context);
             },
-            child: const Text("Cancel filtering"),
+            child: const Text("Cancel"),
           ),
           const SizedBox(width: 10),
           FilledButton(
@@ -235,7 +235,7 @@ class _FiltersDialog<K extends Comparable<K>, T> extends StatelessWidget {
               Navigator.pop(context);
               tableController.applyFilters();
             },
-            child: const Text("Apply filter"),
+            child: const Text("Apply"),
           ),
         ],
       ),
